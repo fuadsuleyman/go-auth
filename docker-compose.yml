@@ -5,7 +5,7 @@ services:
     # image: auth-app
     build: ./
     ports:
-      - 8000:8000
+      - 8008:8000
     depends_on:
       - db
     environment:
@@ -19,7 +19,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=fuaddauf
     ports:
-      - 5432:5432
+      - 5437:5432
 
 volumes: 
   postgres_data:

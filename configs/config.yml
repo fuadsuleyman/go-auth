@@ -1,0 +1,9 @@
+port: "8000"
+
+db:
+  user: "postgres"
+  host: "go-auth_db_1"
+  port: "5432"
+  dbname: "postgres"
+  sslmode: "disable"
+  TimeZone: "Asia/Baku"

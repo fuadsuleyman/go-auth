@@ -2,13 +2,15 @@ package conrtollers
 
 import (
 	"fmt"
-	"time"
 	"os"
+	"time"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/fuadsuleyman/go-auth/database"
-	"github.com/fuadsuleyman/go-auth/models"
 	"github.com/fuadsuleyman/go-auth/helper"
+	"github.com/fuadsuleyman/go-auth/models"
 	"github.com/gofiber/fiber/v2"
+	"github.com/spf13/viper"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -138,7 +140,7 @@ func Login(c *fiber.Ctx) error {
 	},
 	)
 
-	token, err := claims.SignedString([]byte(os.Getenv("SECRET_KEY")))
+	token, err := claims.SignedString([]byte(viper.GetString("secret_ket")))
 
 	if err != nil {
 		c.Status(fiber.StatusOK)

@@ -2,7 +2,7 @@ package database
 
 import (
 	"fmt"
-	"os"
+	// "os"
 
 	"github.com/fuadsuleyman/go-auth/models"
 	"github.com/spf13/viper"
@@ -18,7 +18,7 @@ func Connect() {
 
 	// connection, err := x(postgres.Open("host=localhost user=postgres password=123456 dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Baku"), &gorm.Config{})
 	connection, err := x(postgres.Open(fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s TimeZone=%s",
-	viper.GetString("db.host"), viper.GetString("db.port"), viper.GetString("db.user"), viper.GetString("db.dbname"), os.Getenv("DB_PASSWORD"), viper.GetString("db.sslmode"), viper.GetString("db.TimeZone"))), &gorm.Config{})
+	viper.GetString("db.host"), viper.GetString("db.port"), viper.GetString("db.user"), viper.GetString("db.dbname"), viper.GetString("db.password"), viper.GetString("db.sslmode"), viper.GetString("db.TimeZone"))), &gorm.Config{})
 
 	if err != nil {
 		panic("could not connect to the database!")

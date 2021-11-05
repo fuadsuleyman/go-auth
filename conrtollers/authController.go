@@ -2,7 +2,7 @@ package conrtollers
 
 import (
 	"fmt"
-	"os"
+	// "os"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"

@@ -140,7 +140,7 @@ func Login(c *fiber.Ctx) error {
 	},
 	)
 
-	token, err := claims.SignedString([]byte(viper.GetString("secret_ket")))
+	token, err := claims.SignedString([]byte(viper.GetString("secret_key")))
 
 	if err != nil {
 		c.Status(fiber.StatusOK)

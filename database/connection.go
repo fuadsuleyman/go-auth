@@ -14,7 +14,7 @@ var DB *gorm.DB
 // auth_db_1
 func Connect() {
 	x := gorm.Open
-	connection, err := x(postgres.Open("host=go-auth_db_1 user=postgres password=123456 dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Baku"), &gorm.Config{})
+	connection, err := x(postgres.Open("host=localhost user=postgres password=123456 dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Baku"), &gorm.Config{})
 
 	if err != nil {
 		panic("could not connect to the database!")

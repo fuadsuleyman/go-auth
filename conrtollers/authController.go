@@ -25,6 +25,26 @@ func Register(c *fiber.Ctx) error {
 		return err
 	}
 
+	responseMessage := ""
+
+	var existsUser models.User
+
+	fmt.Println("existUser before query:", existsUser)
+	database.DB.Where("username = ?", data["username"]).First(&existsUser)
+	fmt.Println("existUser after query:", existsUser)
+	fmt.Println("existUser after username:", existsUser.Username)
+	fmt.Println("existUser after password:", existsUser.Password)
+	fmt.Println("existUser after id:", existsUser.Id)
+	fmt.Println("existUser after Usertype:", existsUser.Usertype)
+
+	if existsUser.Id > 0{
+		responseMessage = fmt.Sprintf("This username is alredy exits!")
+		c.Status(fiber.StatusOK)
+		return c.JSON(fiber.Map{
+			"message": responseMessage,
+		})	
+	}
+
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	user := models.User{
@@ -36,7 +56,7 @@ func Register(c *fiber.Ctx) error {
 	database.DB.Create(&user)
 
 
-	responseMessage := fmt.Sprintf("New user successfully created! username: %v, usertype: %v", user.Username, user.Usertype)
+	responseMessage = fmt.Sprintf("New user successfully created! username: %v, usertype: %v", user.Username, user.Usertype)
 	c.Status(fiber.StatusCreated)
 	return c.JSON(fiber.Map{
 		"message": responseMessage,

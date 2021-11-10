@@ -31,7 +31,6 @@ func main() {
 		logger.New(), // add Logger middleware
 	  )
 
-
 	routes.Setup(app)
 
     app.Listen(fmt.Sprintf(":%s", viper.GetString("port")))

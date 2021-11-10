@@ -8,3 +8,5 @@ export SECRET_KEY=supersecretkey
 export DB_PASSWORD=123456
 
 ### productionda connection.go host adi go-auth_db_1 / development-de localhost
+
+### Can not find edende export GO111MODULE=on

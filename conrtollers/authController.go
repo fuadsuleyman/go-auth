@@ -19,6 +19,7 @@ import (
 type tokenClaims struct {
 	jwt.StandardClaims
 	Usertype string
+	Username string
 }
 
 
@@ -133,10 +134,11 @@ func Login(c *fiber.Ctx) error {
 	// token claims data
 	claims := jwt.NewWithClaims(jwt.SigningMethodHS256, &tokenClaims{
 		jwt.StandardClaims{
-			Issuer:    user.Username,
+			Issuer:    "go-auth-system",
 			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
 		},
 		user.Usertype,
+		user.Username,
 	},
 	)
 

@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
 
-  db:
+  dbauth:
     restart: always
     image: postgres
     volumes:
@@ -10,13 +10,13 @@ services:
     environment:
       - POSTGRES_PASSWORD=fuaddauf
     ports:
-      - 5432:5432
+      - 5436:5432
   
-  adminer:
+  adminerauth:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8088:8080
 
 volumes: 
   postgres_data:

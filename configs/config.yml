@@ -4,7 +4,7 @@ secret_key: "supersecretkey"
 db:
   user: "postgres"
   host: "go-auth_db_1"
-  port: "5436"
+  port: "5432"
   password: "123456"
   dbname: "postgres"
   sslmode: "disable"

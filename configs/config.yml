@@ -1,9 +1,9 @@
-port: "8002"
+port: "8007"
 secret_key: "supersecretkey"
 
 db:
   user: "postgres"
-  host: "localhost"
+  host: "go-auth_db_1"
   port: "5436"
   password: "123456"
   dbname: "postgres"

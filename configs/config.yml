@@ -1,4 +1,4 @@
-port: "8007"
+port: "8000"
 secret_key: "supersecretkey"
 
 db:

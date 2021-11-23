@@ -2,6 +2,7 @@ package conrtollers
 
 import (
 	"fmt"
+	"strings"
 	// "os"
 	"time"
 
@@ -48,7 +49,7 @@ func Register(c *fiber.Ctx) error {
 	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	user := models.User{
-		Username: data["username"],
+		Username: strings.ToLower(data["username"]),
 		Usertype: data["usertype"],
 		Password: password,
 	}
@@ -114,7 +115,7 @@ func Login(c *fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Where("username = ?", data["username"]).First(&user)
+	database.DB.Where("username = ?", strings.ToLower(data["username"])).First(&user)
 
 	// check user and password
 	warning := false

@@ -37,7 +37,7 @@ func Register(c *fiber.Ctx) error {
 	var existsUser models.User
 
 	// check if entered username exists in db or not
-	database.DB.Where("username = ?", data["username"]).First(&existsUser)
+	database.DB.Where("username = ?", strings.ToLower(data["username"])).First(&existsUser)
 	if existsUser.Id > 0{
 		c.Status(fiber.StatusOK)
 		return c.JSON(fiber.Map{
